@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CounterItem from './CounterItem'
 import {selectorCounterRed} from '../selectors/counters'
+import {parsePath} from 'history';
 
 const CounterRedList = (props)=>{
     return (<div>
@@ -11,6 +12,10 @@ const CounterRedList = (props)=>{
  
            return (<CounterItem key={counter.id}  {...counter}/>)})
         }
+        <div>
+        <p>Sumary :{props.counters.get('totalRed')}</p>
+        <p>X-rate :{props.counters.get('multiplierRed')}</p>
+        </div>
         
         </div>);
 };

@@ -8,7 +8,7 @@ export default (state = initialState , action)=>{
     console.log(`reducer Yellow`);
            
     switch(action.type){
-       case `Click`:
+       case `CLICK_Y`:
        const {id} = action.payload;
        state = state.setIn(['byId',id,'count'], state.getIn(['byId',id,'count']) + state.getIn(['byId',id,'rise']) );
        //next Step : for of / it i dodawanie wlasciwosci total do sum

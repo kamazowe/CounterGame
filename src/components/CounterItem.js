@@ -1,28 +1,57 @@
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {receiveClick_R} from '../actions/counterRed'
 
-export default class CounterItem extends Component{
+
+export  class CounterItem extends Component{
     constructor(props){
       super(props);
       this.state={
-        id:0,
-        name:'',
-        rise:0,
-        total:0
+        id: this.props.id || 0,
+        name: this.props.name || '',
+        rise:this.props.rise || 0,
+        count:this.props.count || 0
       }
+      this.handleClick = this.handleClick.bind(this);
+      
+    }
+    handleClick(e){
+      console.log(this.props.id)
+      this.props.click(this.props.id)
     }
     componentWillMount(){
       console.log('componentWillMount');
+      console.log('props');
+      console.dir(this.props)
+      
     }
     componentDidMount(){
       console.log('componentDidMount');
+      
     }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps,nextState){
       console.log(`componentWillReceiveProps`);
+      console.log(`nextprops`)
       console.dir(nextProps);
-        this.setState((prevState)=>({counter:prevState.counter + 1}))
+      console.log(`props`)
+      console.dir(this.props);
+      console.log(`state`);
+      console.dir(this.state);
+      console.log("-".repeat(5))
+      for(let prop in this.state){
+        if(this.props[prop] != nextProps[prop] ){
+          this.setState((prevState,props)=>({
+            id: prevState.id,
+            name: nextProps.name,
+            rise: nextProps.rise,
+            count: nextProps.count
+          }))
+        }
+      }
+        this.setState((prevState)=>({counter:prevState.count + 1}))
       console.log(`dotarles kurde`);
-  //                          this.state.counter++
+  
     }
     shouldComponentUpdate(nextProps,nextState){
       console.log('shouldComponentUpdate');
@@ -46,7 +75,18 @@ export default class CounterItem extends Component{
           <h4>{this.state.name}</h4>
           <p>{this.state.id}</p>
           <p>{this.state.rise}</p>
-          <p>{this.state.total}</p>
+          <p>{this.state.count}</p>
+          <button onClick={this.handleClick}>Click</button>
         </div>);
     }
   }
+
+  const mapDispatchToProps =(dispatch)=> ({
+    click:(id)=>dispatch(receiveClick_R(id))
+  })
+
+  export default connect(undefined,mapDispatchToProps)(CounterItem)
+  
+
+  
+

@@ -1,6 +1,7 @@
 import {createStore,combineReducers} from 'redux';
 import counterRedReducer from '../reducers/counterRedReducer';
 import counterYellowReducer from '../reducers/counterYellowReducer';
+
 export default ()=>{
     const store = createStore(
     combineReducers({

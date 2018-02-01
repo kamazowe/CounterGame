@@ -1,11 +1,16 @@
 import React from 'react';
-
-export class App extends React.Component{
-
-  render(){
-    return (<div>Zyje!!! </div>);
-  }
-}
+import CounterRedList from './CounterRedList';
+import CounterYellowList from './CounterYellowList';
 
 
-  export default App;
+ const App =() =>
+ (<div>Strona glowna 
+      <CounterRedList/>
+      {/* <CounterYellowList/> */}
+      
+    </div>);
+  
+export default App;
+
+
+ 

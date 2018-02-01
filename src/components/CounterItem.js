@@ -1,6 +1,7 @@
 
+import React, { Component } from 'react'
 
-class CounterItem extends Component{
+export default class CounterItem extends Component{
     constructor(props){
       super(props);
       this.state={

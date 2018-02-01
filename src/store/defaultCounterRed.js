@@ -1,7 +1,7 @@
 
     export default    {
         totalRed:0,
-        multiplier:1,
+        multiplierRed:1,
         byId:{'Counter1':{
                 id:'Counter1',
                 name:'Counter Yellow x1',
